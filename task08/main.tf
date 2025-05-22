@@ -100,11 +100,7 @@ resource "kubectl_manifest" "deployment" {
     app_image_name   = var.app_image_name
     image_tag        = "latest"
   })
-
-  wait {
-    rollout = true
-  }
-
+  wait       = true
   depends_on = [module.aks]
 }
 
@@ -116,21 +112,13 @@ resource "kubectl_manifest" "secret_provider" {
     redis_password_secret_name = var.redis_primary_key_secret_name
     tenant_id                  = data.azurerm_client_config.current.tenant_id
   })
-
-  wait {
-    rollout = true
-  }
-
+  wait       = true
   depends_on = [module.aks, module.keyvault, module.redis]
 }
 
 resource "kubectl_manifest" "service" {
-  yaml_body = file("${path.module}/k8s-manifests/service.yaml")
-
-  wait {
-    rollout = true
-  }
-
+  yaml_body  = file("${path.module}/k8s-manifests/service.yaml")
+  wait       = true
   depends_on = [module.aks, kubectl_manifest.deployment]
 }
 
