@@ -19,8 +19,9 @@ resource "azurerm_container_registry_task" "build_task" {
     context_access_token = var.git_pat
     image_names          = ["${var.app_image_name}:{{.Run.ID}}"]
   }
-}
-
-resource "azurerm_container_registry_task_schedule" "schedule" {
-  container_registry_task_id = azurerm_container_registry_task.build_task.id
+  timer_trigger {
+    name     = "build-schedule"
+    schedule = "0 0 * * *" # Run daily at midnight UTC
+    enabled  = true
+  }
 }
