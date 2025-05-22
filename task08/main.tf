@@ -81,17 +81,17 @@ module "aci" {
 }
 
 provider "kubectl" {
-  host                   = module.aks.aks_kube_config.host
-  client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
-  client_key             = base64decode(module.aks.aks_kube_config.client_key)
-  cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
+  host                   = yamldecode(module.aks.aks_kube_config).clusters[0].cluster.server
+  client_certificate     = base64decode(yamldecode(module.aks.aks_kube_config).users[0].user.client-certificate-data)
+  client_key             = base64decode(yamldecode(module.aks.aks_kube_config).users[0].user.client-key-data)
+  cluster_ca_certificate = base64decode(yamldecode(module.aks.aks_kube_config).clusters[0].cluster.certificate-authority-data)
 }
 
 provider "kubernetes" {
-  host                   = module.aks.aks_kube_config.host
-  client_certificate     = base64decode(module.aks.aks_kube_config.client_certificate)
-  client_key             = base64decode(module.aks.aks_kube_config.client_key)
-  cluster_ca_certificate = base64decode(module.aks.aks_kube_config.cluster_ca_certificate)
+  host                   = yamldecode(module.aks.aks_kube_config).clusters[0].cluster.server
+  client_certificate     = base64decode(yamldecode(module.aks.aks_kube_config).users[0].user.client-certificate-data)
+  client_key             = base64decode(yamldecode(module.aks.aks_kube_config).users[0].user.client-key-data)
+  cluster_ca_certificate = base64decode(yamldecode(module.aks.aks_kube_config).clusters[0].cluster.certificate-authority-data)
 }
 
 resource "kubectl_manifest" "deployment" {
