@@ -1,49 +1,66 @@
 variable "name_prefix" {
-  type = string
+  description = "The prefix used for naming all resources"
+  type        = string
 }
 variable "location" {
-  type = string
+  description = "The Azure region where resources will be deployed"
+  type        = string
 }
 variable "acr_sku" {
-  type = string
+  description = "The SKU tier for the Azure Container Registry"
+  type        = string
 }
 variable "app_image_name" {
-  type = string
+  description = "The name of the Docker image to build and deploy"
+  type        = string
 }
 variable "git_repo_url" {
-  type = string
+  description = "The URL of the Git repository containing the application source code"
+  type        = string
+  default     = "https://github.com/Suryansh1907/Task081.git"
 }
 variable "git_pat" {
-  type      = string
-  sensitive = true
+  description = "The personal access token for accessing the Git repository"
+  type        = string
+  sensitive   = true
 }
 variable "redis_capacity" {
-  type = number
+  description = "The capacity of the Azure Redis Cache instance"
+  type        = number
 }
 variable "redis_family" {
-  type = string
+  description = "The SKU family of the Azure Redis Cache instance"
+  type        = string
 }
 variable "redis_sku" {
-  type = string
+  description = "The SKU name of the Azure Redis Cache instance"
+  type        = string
 }
 variable "keyvault_sku" {
-  type = string
+  description = "The SKU name for the Azure Key Vault"
+  type        = string
 }
 variable "redis_hostname_secret_name" {
-  type = string
+  description = "The name of the Key Vault secret for the Redis hostname"
+  type        = string
 }
 variable "redis_primary_key_secret_name" {
-  type = string
+  description = "The name of the Key Vault secret for the Redis primary key"
+  type        = string
 }
 variable "node_pool_name" {
-  type = string
+  description = "The name of the default node pool in the AKS cluster"
+  type        = string
 }
 variable "node_count" {
-  type = number
+  description = "The number of nodes in the default node pool"
+  type        = number
 }
 variable "node_size" {
-  type = string
+  description = "The VM size for the nodes in the default node pool"
+  type        = string
 }
 variable "os_disk_type" {
-  type = string
+  description = "The OS disk type for the nodes in the default node pool"
+  type        = string
 }

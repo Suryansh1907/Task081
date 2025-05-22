@@ -2,6 +2,7 @@ name_prefix                   = "cmtr-eh8dj90z-mod8"
 location                      = "East US"
 acr_sku                       = "Basic"
 app_image_name                = "cmtr-eh8dj90z-mod8-app"
+git_repo_url                  = "https://github.com/Suryansh1907/Task081.git"
 redis_capacity                = 2
 redis_family                  = "C"
 redis_sku                     = "Basic"

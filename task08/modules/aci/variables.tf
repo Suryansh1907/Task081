@@ -1,32 +1,42 @@
 variable "resource_group_name" {
-  type = string
+  description = "The name of the resource group where the ACI will be deployed"
+  type        = string
 }
 variable "location" {
-  type = string
+  description = "The Azure region where the ACI will be deployed"
+  type        = string
 }
 variable "aci_name" {
-  type = string
+  description = "The name of the Azure Container Instance"
+  type        = string
 }
 variable "acr_login_server" {
-  type = string
+  description = "The login server URL of the Azure Container Registry"
+  type        = string
 }
 variable "acr_admin_username" {
-  type = string
+  description = "The admin username for the Azure Container Registry"
+  type        = string
 }
 variable "acr_admin_password" {
-  type      = string
-  sensitive = true
+  description = "The admin password for the Azure Container Registry"
+  type        = string
+  sensitive   = true
 }
 variable "app_image_name" {
-  type = string
+  description = "The name of the Docker image to deploy in ACI"
+  type        = string
 }
 variable "redis_hostname" {
-  type = string
+  description = "The hostname of the Azure Redis Cache instance"
+  type        = string
 }
 variable "redis_primary_key" {
-  type      = string
-  sensitive = true
+  description = "The primary access key for the Azure Redis Cache instance"
+  type        = string
+  sensitive   = true
 }
 variable "tags" {
-  type = map(string)
+  description = "Tags to apply to the ACI resources"
+  type        = map(string)
 }
