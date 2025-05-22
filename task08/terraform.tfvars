@@ -1,0 +1,14 @@
+name_prefix                   = "cmtr-eh8dj90z-mod8"
+location                      = "East US"
+acr_sku                       = "Basic"
+app_image_name                = "cmtr-eh8dj90z-mod8-app"
+redis_capacity                = 2
+redis_family                  = "C"
+redis_sku                     = "Basic"
+keyvault_sku                  = "standard"
+redis_hostname_secret_name    = "redis-hostname"
+redis_primary_key_secret_name = "redis-primary-key"
+node_pool_name                = "system"
+node_count                    = 1
+node_size                     = "Standard_D2ads_v5"
+os_disk_type                  = "Ephemeral"
